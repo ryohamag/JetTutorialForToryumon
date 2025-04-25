@@ -5,12 +5,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,10 +23,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.websarva.wings.jettutorialfortoryumon.R
 
 @Composable
-fun MainScreen(innerPadding: PaddingValues) {
+fun MainScreen(
+    navController: NavController,
+    innerPadding: PaddingValues
+) {
     //要素を縦に並べる
     Column(
         horizontalAlignment = Alignment.CenterHorizontally, //要素を中央に並べる
@@ -68,5 +74,18 @@ fun MainScreen(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.height(20.dp))
 
         EmailSection()
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        //詳細画面へ遷移するボタン
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { navController.navigate("DetailScreen") } //DetailScreenへ遷移
+        ) {
+            Text(
+                text = "詳細画面へ",
+                color = Color.White,
+            )
+        }
     }
 }
