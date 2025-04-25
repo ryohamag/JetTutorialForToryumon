@@ -64,5 +64,9 @@ fun MainScreen(innerPadding: PaddingValues) {
         Spacer(modifier = Modifier.height(20.dp))
 
         DepartmentSection()
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        EmailSection()
     }
 }
