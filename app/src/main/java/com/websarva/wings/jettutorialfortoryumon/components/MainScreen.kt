@@ -1,7 +1,6 @@
 package com.websarva.wings.jettutorialfortoryumon.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -31,6 +30,7 @@ fun MainScreen(innerPadding: PaddingValues) {
         horizontalAlignment = Alignment.CenterHorizontally, //要素を中央に並べる
         modifier = Modifier //要素の修飾に用いる
             .padding(innerPadding) //Columnの周りに余白を設定
+            .padding(start = 20.dp, end = 20.dp) //Columnの外側に余白を設定
             .fillMaxSize() //Columnのサイズを画面いっぱいに広げる
             .verticalScroll(rememberScrollState()) //縦スクロールを可能にする
     ){  //プロフィール画像
@@ -60,5 +60,9 @@ fun MainScreen(innerPadding: PaddingValues) {
             color = Color.Gray,
             fontSize = 16.sp,
         )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        DepartmentSection()
     }
 }
