@@ -1,5 +1,7 @@
 package com.websarva.wings.jettutorialfortoryumon.components
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,15 +12,18 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.websarva.wings.jettutorialfortoryumon.R
+import androidx.core.net.toUri
 
 //textの内容は自由に変えてください
 @Composable
@@ -67,5 +72,45 @@ fun DetailScreen() {
                 text = "所属団体：C0de,NITMic,準硬式野球部"
             )
         }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        val context = LocalContext.current
+        Button(
+            onClick = { openTwitter(context) },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Twitterを開く",
+                color = Color.White
+            )
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Button(
+            onClick = { openGithub(context) },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Githubを開く",
+                color = Color.White
+            )
+        }
     }
+}
+
+//このコードの詳しい内容は割愛
+fun openTwitter(context: Context) {
+    val intent = Intent(Intent.ACTION_VIEW).apply {
+        data = "https://twitter.com/ryo_hamag".toUri() //ここでURLを指定する
+    }
+    context.startActivity(intent)
+}
+
+fun openGithub(context: Context) {
+    val intent = Intent(Intent.ACTION_VIEW).apply {
+        data = "https://github.com/ryohamag".toUri()
+    }
+    context.startActivity(intent)
 }
